@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VERTICALITY &darr; scroll down</title>
+  <style type="text/css">
+    body {
+      background: #575757;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    #line {
+      border: 1px solid #DCDCDC;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      margin-left: -0.5px;
+    }
+
+    #position {
+      position: fixed;
+      margin-left: 5px;
+      bottom: 5px;
+      left: 50%;
+      width: 10px;
+
+      font-family: monospace;
+
+      color: #DCDCDC;
+      word-break: break-all;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div id="line"></div>
+  <div id="position"></div>
+
+  <script type="text/javascript">
+    var line = document.getElementById("line");
+    var position = document.getElementById("position");
+
+    function update () {
+      var height = window.innerHeight + window.scrollY;
+      line.style.height = height + 'px';
+      position.innerHTML = parseInt(height, 10) + '&middot;px&darr;';
+    }
+
+    update();
+    window.onscroll = function(e) { if(window.scrollY) { update(); } }
+    window.onresize = function(e) { update(); }
+  </script>
+</body>
+</html>
